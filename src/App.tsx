@@ -55,23 +55,27 @@ const App: React.FC = () => {
   return (
     <div style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#3f51b5' }}>Restaurant Finder</h1>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, marginBottom: 2 }}>
-        <ToggleButtonGroup value={selectedDishes} onChange={handleDishChange}>
-          {dishOptions.map((dish, index) => (
-            <ToggleButton
-              key={index}
-              value={dish}
-              aria-label={dish}
-              style={{
-                backgroundColor: selectedDishes.includes(dish) ? '#3f51b5' : '#fff',
-                color: selectedDishes.includes(dish) ? '#fff' : '#3f51b5'
-              }}
-            >
-              {dish}
-            </ToggleButton>
-          ))}
-        </ToggleButtonGroup>
-      </Box>
+      <ToggleButtonGroup
+        value={selectedDishes}
+        onChange={handleDishChange}
+        aria-label="Dish Filter"
+        style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
+      >
+        {dishOptions.map((dish, index) => (
+          <ToggleButton
+            key={index}
+            value={dish}
+            aria-label={dish}
+            style={{
+              backgroundColor: selectedDishes.includes(dish) ? '#3f51b5' : '#fff',
+              color: selectedDishes.includes(dish) ? '#fff' : '#3f51b5',
+              minWidth: '100px', // Mindestbreite für jeden ToggleButton
+            }}
+          >
+            {dish}
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
       <div style={{ width: '300px', margin: '20px auto' }}>
         <Typography id="distance-slider" gutterBottom style={{ color: '#3f51b5' }}>
           Filter by Distance (up to {maxDistance ? maxDistance.toFixed(1) : '2.0'} km)
