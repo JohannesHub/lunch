@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import RestaurantList from './components/RestaurantList';
+import { Restaurant } from './types';
+import restaurantData from './data/restaurants.json';
 
-function App() {
+const App: React.FC = () => {
+  const [filterByDish, setFilterByDish] = useState<string | null>(null);
+  const [dishOptions, setDishOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    const uniqueDishes = Array.from(
+      new Set(restaurantData.flatMap((restaurant) => restaurant.dishes.split(', ')))
+    );
+    setDishOptions(uniqueDishes);
+  }, []);
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedDish = event.target.value;
+    setFilterByDish(selectedDish !== 'all' ? selectedDish : null);
+  };
+
+  const filteredRestaurants = filterByDish
+    ? restaurantData.filter((restaurant) => restaurant.dishes.includes(filterByDish))
+    : restaurantData;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Restaurant Finder</h1>
+      <div>
+        <label htmlFor="dishFilter">Filter by Dish:</label>
+        <select id="dishFilter" onChange={handleFilterChange}>
+          <option value="all">All</option>
+          {dishOptions.map((dish, index) => (
+            <option key={index} value={dish}>
+              {dish}
+            </option>
+          ))}
+        </select>
+      </div>
+      <RestaurantList restaurants={filteredRestaurants} />
     </div>
   );
-}
+};
 
 export default App;

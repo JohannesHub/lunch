@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Restaurant A",
+    "dishes": "Pizza, Pasta, Salad",
+    "rating": 4.5,
+    "distance": "1.2 km",
+    "openingHours": "9:00 AM - 10:00 PM",
+    "price": "$$",
+    "tried": true
+  },
+  {
+    "name": "Restaurant B",
+    "dishes": "Sushi, Ramen, Tempura",
+    "rating": 4.2,
+    "distance": "0.8 km",
+    "openingHours": "10:00 AM - 9:00 PM",
+    "price": "$$$",
+    "tried": false
+  },
+  {
+    "name": "Restaurant C",
+    "dishes": "Burger, Fries, Milkshake",
+    "rating": 4.7,
+    "distance": "1.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  }
+]
