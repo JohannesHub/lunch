@@ -1,29 +1,91 @@
 [
   {
-    "name": "Restaurant A",
-    "dishes": "Pizza, Pasta, Salad",
+    "name": "Eivgi's",
+    "dishes": "Falafel",
     "rating": 4.5,
-    "distance": "1.2 km",
+    "distance": "0.5 km",
     "openingHours": "9:00 AM - 10:00 PM",
-    "price": "$$",
+    "price": "$",
     "tried": true
   },
   {
-    "name": "Restaurant B",
-    "dishes": "Sushi, Ramen, Tempura",
+    "name": "Cafe Olea",
+    "dishes": "Kumpir, wechselnd, türkisch",
     "rating": 4.2,
     "distance": "0.8 km",
     "openingHours": "10:00 AM - 9:00 PM",
-    "price": "$$$",
-    "tried": false
+    "price": "$",
+    "tried": true
   },
   {
-    "name": "Restaurant C",
-    "dishes": "Burger, Fries, Milkshake",
+    "name": "Markt Rathaus",
+    "dishes": "Burger, Asiatisch",
     "rating": 4.7,
     "distance": "1.5 km",
     "openingHours": "11:00 AM - 11:00 PM",
     "price": "$",
     "tried": true
+  },
+  {
+    "name": "Markt Kirche",
+    "dishes": "Maultaschen, Crepe",
+    "rating": 4.7,
+    "distance": "1.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "Rüyam",
+    "dishes": "Döner, Falafel",
+    "rating": 4.7,
+    "distance": "1.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "The Red",
+    "dishes": "Banh Mi, Bowls",
+    "rating": 4.7,
+    "distance": "0.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "Sangam",
+    "dishes": "indisch",
+    "rating": 4.7,
+    "distance": "0.4 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "Habibi",
+    "dishes": "Falafel",
+    "rating": 4.7,
+    "distance": "0.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "Schlaraffenland",
+    "dishes": "Kumpir",
+    "rating": 4.7,
+    "distance": "0.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "Ban Vegan",
+    "dishes": "vegan, asiatisch",
+    "distance": "0.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": false
   }
 ]
