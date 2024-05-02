@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const uniqueDishes = Array.from(
-      new Set(restaurantData.flatMap((restaurant) => restaurant.dishes.split(', ')))
+      new Set(restaurantData.flatMap((restaurant) => restaurant.dishes.toLowerCase().split(', ')))
     );
     setDishOptions(uniqueDishes);
   }, []);
@@ -39,33 +39,41 @@ const App: React.FC = () => {
 
   const filteredRestaurants = restaurantData.filter((restaurant) => {
     if (selectedDishes.length > 0) {
-      if (!selectedDishes.some((dish) => restaurant.dishes.includes(dish))) {
+      if (!selectedDishes.some((dish) => restaurant.dishes.toLowerCase().includes(dish.toLowerCase()))) {
         return false;
       }
     }
     if (maxDistance && parseFloat(restaurant.distance) > maxDistance) {
       return false;
     }
-    if (triedFilter !== null && restaurant.hasOwnProperty('rating') && restaurant.tried !== triedFilter) {
+    if (triedFilter !== null && restaurant.tried !== triedFilter) {
       return false;
     }
     return true;
   });
 
   return (
-    <div>
-      <h1>Restaurant Finder</h1>
+    <div style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#3f51b5' }}>Restaurant Finder</h1>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, marginBottom: 2 }}>
         <ToggleButtonGroup value={selectedDishes} onChange={handleDishChange}>
           {dishOptions.map((dish, index) => (
-            <ToggleButton key={index} value={dish} aria-label={dish}>
+            <ToggleButton
+              key={index}
+              value={dish}
+              aria-label={dish}
+              style={{
+                backgroundColor: selectedDishes.includes(dish) ? '#3f51b5' : '#fff',
+                color: selectedDishes.includes(dish) ? '#fff' : '#3f51b5'
+              }}
+            >
               {dish}
             </ToggleButton>
           ))}
         </ToggleButtonGroup>
       </Box>
       <div style={{ width: '300px', margin: '20px auto' }}>
-        <Typography id="distance-slider" gutterBottom>
+        <Typography id="distance-slider" gutterBottom style={{ color: '#3f51b5' }}>
           Filter by Distance (up to {maxDistance ? maxDistance.toFixed(1) : '2.0'} km)
         </Typography>
         <Slider
@@ -84,8 +92,24 @@ const App: React.FC = () => {
           onChange={handleTriedFilterChange}
           aria-label="tried filter"
         >
-          <ToggleButton value={true}>Ausprobiert</ToggleButton>
-          <ToggleButton value={false}>Nicht ausprobiert</ToggleButton>
+          <ToggleButton
+            value={true}
+            style={{
+              backgroundColor: triedFilter === true ? '#3f51b5' : '#fff',
+              color: triedFilter === true ? '#fff' : '#3f51b5'
+            }}
+          >
+            Ausprobiert
+          </ToggleButton>
+          <ToggleButton
+            value={false}
+            style={{
+              backgroundColor: triedFilter === false ? '#3f51b5' : '#fff',
+              color: triedFilter === false ? '#fff' : '#3f51b5'
+            }}
+          >
+            Nicht ausprobiert
+          </ToggleButton>
         </ToggleButtonGroup>
       </div>
       <RestaurantList restaurants={filteredRestaurants} />

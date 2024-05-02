@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Restaurant } from '../types';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Props {
   restaurants: Restaurant[];
@@ -18,9 +20,9 @@ const RestaurantList: React.FC<Props> = ({ restaurants }) => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Gerichte</TableCell>
-              <TableCell align="right">Bewertung</TableCell>
+              {/*<TableCell align="right">Bewertung</TableCell>*/}
               <TableCell align="right">Entfernung</TableCell>
-              <TableCell align="right">Öffnungszeiten</TableCell>
+              {/*<TableCell align="right">Öffnungszeiten</TableCell>*/}
               <TableCell align="right">Preis</TableCell>
               <TableCell>Ausprobiert</TableCell>
             </TableRow>
@@ -41,11 +43,11 @@ const RestaurantList: React.FC<Props> = ({ restaurants }) => {
                   {restaurant.name}
                 </TableCell>
                 <TableCell>{restaurant.dishes}</TableCell>
-                <TableCell align="right">{restaurant.rating}</TableCell>
+                {/*<TableCell align="right">{restaurant.rating}</TableCell>*/}
                 <TableCell align="right">{restaurant.distance}</TableCell>
-                <TableCell align="right">{restaurant.openingHours}</TableCell>
+                {/*<TableCell align="right">{restaurant.openingHours}</TableCell>*/}
                 <TableCell align="right">{restaurant.price}</TableCell>
-                <TableCell>{restaurant.tried ? 'Ja' : 'Nein'}</TableCell>
+                <TableCell>{restaurant.tried ? <CheckIcon color="primary" /> : <CloseIcon color="error" />}</TableCell>
               </TableRow>
             ))}
           </TableBody>

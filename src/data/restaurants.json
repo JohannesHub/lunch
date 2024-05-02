@@ -12,7 +12,7 @@
     "name": "Cafe Olea",
     "dishes": "Kumpir, wechselnd, türkisch",
     "rating": 4.2,
-    "distance": "0.8 km",
+    "distance": "0.4 km",
     "openingHours": "10:00 AM - 9:00 PM",
     "price": "$",
     "tried": true
@@ -21,7 +21,7 @@
     "name": "Markt Rathaus",
     "dishes": "Burger, Asiatisch",
     "rating": 4.7,
-    "distance": "1.5 km",
+    "distance": "0.6 km",
     "openingHours": "11:00 AM - 11:00 PM",
     "price": "$",
     "tried": true
@@ -30,7 +30,7 @@
     "name": "Markt Kirche",
     "dishes": "Maultaschen, Crepe",
     "rating": 4.7,
-    "distance": "1.5 km",
+    "distance": "0.4 km",
     "openingHours": "11:00 AM - 11:00 PM",
     "price": "$",
     "tried": true
@@ -39,7 +39,7 @@
     "name": "Rüyam",
     "dishes": "Döner, Falafel",
     "rating": 4.7,
-    "distance": "1.5 km",
+    "distance": "0.5 km",
     "openingHours": "11:00 AM - 11:00 PM",
     "price": "$",
     "tried": true
@@ -83,9 +83,41 @@
   {
     "name": "Ban Vegan",
     "dishes": "vegan, asiatisch",
-    "distance": "0.5 km",
+    "distance": "0.2 km",
     "openingHours": "11:00 AM - 11:00 PM",
     "price": "$",
     "tried": false
+  },
+  {
+    "name": "Lenzig",
+    "dishes": "deutsch",
+    "distance": "0.1 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$$",
+    "tried": true
+  },
+  {
+    "name": "Mangia E Bevi",
+    "dishes": "Pizza, Pasta",
+    "distance": "0.1 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$$",
+    "tried": true
+  },
+  {
+    "name": "Yogi Haus",
+    "dishes": "indisch",
+    "distance": "0.2 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
+  },
+  {
+    "name": "Trattoria Perla Jonica",
+    "dishes": "Pizza, Pasta",
+    "distance": "0.5 km",
+    "openingHours": "11:00 AM - 11:00 PM",
+    "price": "$",
+    "tried": true
   }
 ]
