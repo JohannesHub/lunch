@@ -1,5 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Box, Card, CardContent, Grid, Rating, Chip, ToggleButtonGroup, ToggleButton, FormControlLabel, Switch, useTheme, useMediaQuery } from '@mui/material';
+import { 
+  Container, 
+  Typography, 
+  Box, 
+  Card, 
+  CardContent, 
+  Grid, 
+  Rating, 
+  Chip, 
+  ToggleButtonGroup, 
+  ToggleButton, 
+  FormControlLabel, 
+  Switch, 
+  useTheme, 
+  useMediaQuery,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  Divider
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import restaurants from './data/restaurants.json';
 import { Restaurant } from './types';
 
@@ -8,6 +29,7 @@ const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 function App() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string>(() => {
     // Convert current time to Berlin time
     const berlinTime = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
@@ -85,102 +107,142 @@ function App() {
     setSelectedDishes(newDishes);
   };
 
+  const renderFilters = () => (
+    <>
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Day Selection
+        </Typography>
+        <ToggleButtonGroup
+          value={selectedDay}
+          exclusive
+          onChange={handleDayChange}
+          aria-label="day selection"
+          size={isMobile ? "small" : "medium"}
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 1,
+            '& .MuiToggleButton-root': {
+              flex: '1 1 auto',
+              minWidth: '100px',
+              whiteSpace: 'nowrap'
+            }
+          }}
+        >
+          {DAYS.map((day) => (
+            <ToggleButton 
+              key={day} 
+              value={day}
+              sx={{ 
+                textTransform: 'capitalize'
+              }}
+            >
+              {day}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+      </Box>
+
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Dish Types
+        </Typography>
+        <ToggleButtonGroup
+          value={selectedDishes}
+          onChange={handleDishChange}
+          aria-label="dish selection"
+          size={isMobile ? "small" : "medium"}
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 1,
+            '& .MuiToggleButton-root': {
+              flex: '0 0 auto',
+              minWidth: '100px',
+              whiteSpace: 'nowrap'
+            }
+          }}
+        >
+          {dishOptions.map((dish) => (
+            <ToggleButton 
+              key={dish} 
+              value={dish}
+              sx={{ 
+                textTransform: 'capitalize'
+              }}
+            >
+              {dish}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+      </Box>
+
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Filters
+        </Typography>
+        <List>
+          <ListItem>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={showOnlyOpen}
+                  onChange={(e) => setShowOnlyOpen(e.target.checked)}
+                />
+              }
+              label="Show only open restaurants"
+            />
+          </ListItem>
+          <ListItem>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={fastMealsFilter}
+                  onChange={(e) => setFastMealsFilter(e.target.checked)}
+                />
+              }
+              label="Was Schnelles (≤ 500m)"
+            />
+          </ListItem>
+        </List>
+      </Box>
+    </>
+  );
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          Lunch Options
-        </Typography>
-        
-        <Box sx={{ mb: 3, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
-          <ToggleButtonGroup
-            value={selectedDay}
-            exclusive
-            onChange={handleDayChange}
-            aria-label="day selection"
-            sx={{
-              display: 'flex',
-              flexWrap: isMobile ? 'nowrap' : 'wrap',
-              gap: 1,
-              '& .MuiToggleButton-root': {
-                flex: isMobile ? '0 0 auto' : '1 1 auto',
-                minWidth: isMobile ? 'auto' : '100px',
-                whiteSpace: 'nowrap',
-                px: isMobile ? 1 : 2
-              }
-            }}
-          >
-            {DAYS.map((day) => (
-              <ToggleButton 
-                key={day} 
-                value={day}
-                sx={{ 
-                  textTransform: 'capitalize'
-                }}
-              >
-                {isMobile ? day.slice(0, 3) : day}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+          <Typography variant="h3" component="h1" sx={{ flexGrow: 1 }}>
+            Lunch Options
+          </Typography>
+          {isMobile && (
+            <IconButton
+              color="inherit"
+              aria-label="open filters"
+              onClick={() => setDrawerOpen(true)}
+              edge="start"
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
         </Box>
 
-        <Box sx={{ mb: 3, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
-          <ToggleButtonGroup
-            value={selectedDishes}
-            onChange={handleDishChange}
-            aria-label="dish selection"
-            sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 1,
-              '& .MuiToggleButton-root': {
-                flex: '0 0 auto',
-                minWidth: isMobile ? '80px' : '100px',
-                whiteSpace: 'nowrap',
-                px: isMobile ? 1 : 2
-              }
-            }}
-          >
-            {dishOptions.map((dish) => (
-              <ToggleButton 
-                key={dish} 
-                value={dish}
-                sx={{ 
-                  textTransform: 'capitalize'
-                }}
-              >
-                {dish}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
-        </Box>
+        {!isMobile && renderFilters()}
 
-        <Box sx={{ 
-          mb: 3, 
-          display: 'flex', 
-          gap: 2,
-          flexDirection: isMobile ? 'column' : 'row',
-          alignItems: isMobile ? 'flex-start' : 'center'
-        }}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={showOnlyOpen}
-                onChange={(e) => setShowOnlyOpen(e.target.checked)}
-              />
-            }
-            label="Show only open restaurants"
-          />
-          <FormControlLabel
-            control={
-              <Switch
-                checked={fastMealsFilter}
-                onChange={(e) => setFastMealsFilter(e.target.checked)}
-              />
-            }
-            label="Was Schnelles (≤ 500m)"
-          />
-        </Box>
+        <Drawer
+          anchor="right"
+          open={drawerOpen}
+          onClose={() => setDrawerOpen(false)}
+        >
+          <Box sx={{ width: 280, p: 2 }}>
+            <Typography variant="h6" gutterBottom>
+              Filters
+            </Typography>
+            {renderFilters()}
+          </Box>
+        </Drawer>
 
         <Grid container spacing={3}>
           {filteredRestaurants.map((restaurant) => (
