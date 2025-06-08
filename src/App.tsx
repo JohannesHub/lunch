@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import RestaurantList from './components/RestaurantList';
-import { Restaurant } from './types';
 import restaurantData from './data/restaurants.json';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 const App: React.FC = () => {
   const [selectedDishes, setSelectedDishes] = useState<string[]>([]);

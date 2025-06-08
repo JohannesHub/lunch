@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Restaurant } from '../types';
 import CheckIcon from '@mui/icons-material/Check';
@@ -9,8 +9,6 @@ interface Props {
 }
 
 const RestaurantList: React.FC<Props> = ({ restaurants }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <div>
       <h2>Restaurant List</h2>
@@ -36,8 +34,6 @@ const RestaurantList: React.FC<Props> = ({ restaurants }) => {
                     backgroundColor: '#f0f0f0',
                   },
                 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <TableCell component="th" scope="row">
                   {restaurant.name}
