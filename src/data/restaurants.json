@@ -4,7 +4,14 @@
     "dishes": "Falafel",
     "rating": 4.5,
     "distance": "0.5 km",
-    "openingHours": "9:00 AM - 10:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "9:00 AM", "close": "10:00 PM" },
+      { "day": "Tuesday", "open": "9:00 AM", "close": "10:00 PM" },
+      { "day": "Wednesday", "open": "9:00 AM", "close": "10:00 PM" },
+      { "day": "Thursday", "open": "9:00 AM", "close": "10:00 PM" },
+      { "day": "Friday", "open": "9:00 AM", "close": "10:00 PM" },
+      { "day": "Saturday", "open": "10:00 AM", "close": "10:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -14,7 +21,13 @@
     "dishes": "Kumpir, wechselnd, türkisch",
     "rating": 4.2,
     "distance": "0.4 km",
-    "openingHours": "10:00 AM - 9:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "10:00 AM", "close": "9:00 PM" },
+      { "day": "Tuesday", "open": "10:00 AM", "close": "9:00 PM" },
+      { "day": "Wednesday", "open": "10:00 AM", "close": "9:00 PM" },
+      { "day": "Thursday", "open": "10:00 AM", "close": "9:00 PM" },
+      { "day": "Friday", "open": "10:00 AM", "close": "9:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -24,7 +37,15 @@
     "dishes": "Burger, Asiatisch",
     "rating": 4.7,
     "distance": "0.6 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Sunday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -34,7 +55,15 @@
     "dishes": "Maultaschen, Crepe",
     "rating": 4.7,
     "distance": "0.4 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Sunday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -44,7 +73,14 @@
     "dishes": "Döner, Falafel",
     "rating": 4.7,
     "distance": "0.5 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -54,7 +90,14 @@
     "dishes": "Banh Mi, Bowls",
     "rating": 4.7,
     "distance": "0.5 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -64,7 +107,13 @@
     "dishes": "indisch",
     "rating": 4.7,
     "distance": "0.4 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": false
@@ -74,7 +123,14 @@
     "dishes": "Falafel",
     "rating": 4.7,
     "distance": "0.5 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -84,7 +140,14 @@
     "dishes": "Kumpir",
     "rating": 4.7,
     "distance": "0.5 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": true
@@ -93,7 +156,13 @@
     "name": "Ban Vegan",
     "dishes": "vegan, asiatisch",
     "distance": "0.2 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": false,
     "isFast": false
@@ -102,7 +171,13 @@
     "name": "Lenzig",
     "dishes": "deutsch",
     "distance": "0.1 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$$",
     "tried": true,
     "isFast": false
@@ -111,7 +186,14 @@
     "name": "Mangia E Bevi",
     "dishes": "Pizza, Pasta",
     "distance": "0.1 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$$",
     "tried": true,
     "isFast": false
@@ -120,7 +202,13 @@
     "name": "Yogi Haus",
     "dishes": "indisch",
     "distance": "0.2 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": false
@@ -129,7 +217,14 @@
     "name": "Trattoria Perla Jonica",
     "dishes": "Pizza, Pasta",
     "distance": "0.5 km",
-    "openingHours": "11:00 AM - 11:00 PM",
+    "openingHours": [
+      { "day": "Monday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Tuesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Wednesday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Thursday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Friday", "open": "11:00 AM", "close": "11:00 PM" },
+      { "day": "Saturday", "open": "11:00 AM", "close": "11:00 PM" }
+    ],
     "price": "$",
     "tried": true,
     "isFast": false
