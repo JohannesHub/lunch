@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Box, Card, CardContent, Grid, Rating, Chip, ToggleButtonGroup, ToggleButton, FormControlLabel, Switch } from '@mui/material';
+import { Container, Typography, Box, Card, CardContent, Grid, Rating, Chip, ToggleButtonGroup, ToggleButton, FormControlLabel, Switch, useTheme, useMediaQuery } from '@mui/material';
 import restaurants from './data/restaurants.json';
 import { Restaurant } from './types';
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 function App() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [selectedDay, setSelectedDay] = useState<string>(() => {
     // Convert current time to Berlin time
     const berlinTime = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
@@ -16,6 +18,8 @@ function App() {
   const [showOnlyOpen, setShowOnlyOpen] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [fastMealsFilter, setFastMealsFilter] = useState(false);
+  const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
+  const [dishOptions, setDishOptions] = useState<string[]>([]);
 
   // Update current time every minute
   useEffect(() => {
@@ -23,6 +27,16 @@ function App() {
       setCurrentTime(new Date());
     }, 60000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Initialize dish options
+  useEffect(() => {
+    const uniqueDishes = Array.from(
+      new Set(restaurants.flatMap((restaurant) => 
+        restaurant.dishes.toLowerCase().split(', ')
+      ))
+    );
+    setDishOptions(uniqueDishes);
   }, []);
 
   const isRestaurantOpen = (restaurant: Restaurant) => {
@@ -53,14 +67,22 @@ function App() {
 
   const filteredRestaurants = restaurants.filter(restaurant => {
     const isOpen = isRestaurantOpen(restaurant);
-    const isFast = !fastMealsFilter || (restaurant.isFast && parseFloat(restaurant.distance) <= 0.7);
-    return (!showOnlyOpen || isOpen) && isFast;
+    const isFast = !fastMealsFilter || (restaurant.isFast && parseFloat(restaurant.distance) <= 0.5);
+    const hasSelectedDish = selectedDishes.length === 0 || 
+      selectedDishes.some(dish => 
+        restaurant.dishes.toLowerCase().includes(dish.toLowerCase())
+      );
+    return (!showOnlyOpen || isOpen) && isFast && hasSelectedDish;
   });
 
   const handleDayChange = (event: React.MouseEvent<HTMLElement>, newDay: string) => {
     if (newDay !== null) {
       setSelectedDay(newDay);
     }
+  };
+
+  const handleDishChange = (event: React.MouseEvent<HTMLElement>, newDishes: string[]) => {
+    setSelectedDishes(newDishes);
   };
 
   return (
@@ -70,22 +92,76 @@ function App() {
           Lunch Options
         </Typography>
         
-        <Box sx={{ mb: 3 }}>
+        <Box sx={{ mb: 3, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
           <ToggleButtonGroup
             value={selectedDay}
             exclusive
             onChange={handleDayChange}
             aria-label="day selection"
+            sx={{
+              display: 'flex',
+              flexWrap: isMobile ? 'nowrap' : 'wrap',
+              gap: 1,
+              '& .MuiToggleButton-root': {
+                flex: isMobile ? '0 0 auto' : '1 1 auto',
+                minWidth: isMobile ? 'auto' : '100px',
+                whiteSpace: 'nowrap',
+                px: isMobile ? 1 : 2
+              }
+            }}
           >
             {DAYS.map((day) => (
-              <ToggleButton key={day} value={day}>
-                {day}
+              <ToggleButton 
+                key={day} 
+                value={day}
+                sx={{ 
+                  textTransform: 'capitalize'
+                }}
+              >
+                {isMobile ? day.slice(0, 3) : day}
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
         </Box>
 
-        <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        <Box sx={{ mb: 3, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+          <ToggleButtonGroup
+            value={selectedDishes}
+            onChange={handleDishChange}
+            aria-label="dish selection"
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 1,
+              '& .MuiToggleButton-root': {
+                flex: '0 0 auto',
+                minWidth: isMobile ? '80px' : '100px',
+                whiteSpace: 'nowrap',
+                px: isMobile ? 1 : 2
+              }
+            }}
+          >
+            {dishOptions.map((dish) => (
+              <ToggleButton 
+                key={dish} 
+                value={dish}
+                sx={{ 
+                  textTransform: 'capitalize'
+                }}
+              >
+                {dish}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </Box>
+
+        <Box sx={{ 
+          mb: 3, 
+          display: 'flex', 
+          gap: 2,
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: isMobile ? 'flex-start' : 'center'
+        }}>
           <FormControlLabel
             control={
               <Switch
@@ -102,7 +178,7 @@ function App() {
                 onChange={(e) => setFastMealsFilter(e.target.checked)}
               />
             }
-            label="Was Schnelles (≤ 700m)"
+            label="Was Schnelles (≤ 500m)"
           />
         </Box>
 
