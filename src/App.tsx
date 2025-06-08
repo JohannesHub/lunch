@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
   const [maxDistance, setMaxDistance] = useState<number | null>(null);
   const [triedFilter, setTriedFilter] = useState<boolean | null>(null);
+  const [fastMealsFilter, setFastMealsFilter] = useState<boolean>(false);
   const [dishOptions, setDishOptions] = useState<string[]>([]);
 
   useEffect(() => {
@@ -37,6 +38,10 @@ const App: React.FC = () => {
     setTriedFilter(newValue);
   };
 
+  const handleFastMealsFilterChange = (event: React.MouseEvent<HTMLElement>, newValue: boolean) => {
+    setFastMealsFilter(newValue);
+  };
+
   const filteredRestaurants = restaurantData.filter((restaurant) => {
     if (selectedDishes.length > 0) {
       if (!selectedDishes.some((dish) => restaurant.dishes.toLowerCase().includes(dish.toLowerCase()))) {
@@ -48,6 +53,11 @@ const App: React.FC = () => {
     }
     if (triedFilter !== null && restaurant.tried !== triedFilter) {
       return false;
+    }
+    if (fastMealsFilter) {
+      if (!restaurant.isFast || parseFloat(restaurant.distance) > 0.7) {
+        return false;
+      }
     }
     return true;
   });
@@ -69,7 +79,7 @@ const App: React.FC = () => {
             style={{
               backgroundColor: selectedDishes.includes(dish) ? '#3f51b5' : '#fff',
               color: selectedDishes.includes(dish) ? '#fff' : '#3f51b5',
-              minWidth: '100px', // Mindestbreite für jeden ToggleButton
+              minWidth: '100px',
             }}
           >
             {dish}
@@ -89,7 +99,7 @@ const App: React.FC = () => {
           aria-labelledby="distance-slider"
         />
       </div>
-      <div>
+      <div style={{ marginBottom: '20px' }}>
         <ToggleButtonGroup
           value={triedFilter}
           exclusive
@@ -113,6 +123,24 @@ const App: React.FC = () => {
             }}
           >
             Nicht ausprobiert
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </div>
+      <div style={{ marginBottom: '20px' }}>
+        <ToggleButtonGroup
+          value={fastMealsFilter}
+          exclusive
+          onChange={handleFastMealsFilterChange}
+          aria-label="fast meals filter"
+        >
+          <ToggleButton
+            value={true}
+            style={{
+              backgroundColor: fastMealsFilter ? '#3f51b5' : '#fff',
+              color: fastMealsFilter ? '#fff' : '#3f51b5'
+            }}
+          >
+            Was Schnelles
           </ToggleButton>
         </ToggleButtonGroup>
       </div>

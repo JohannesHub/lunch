@@ -6,4 +6,5 @@ export interface Restaurant {
   openingHours: string;
   price: string;
   tried: boolean;
+  isFast?: boolean;
 }
